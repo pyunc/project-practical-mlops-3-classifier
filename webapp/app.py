@@ -27,12 +27,35 @@ def predict():
     { "prediction": [ 20.35373177134412 ] }
     """
 
-    clf = joblib.load("boston_housing_prediction.joblib")
-    inference_payload = pd.DataFrame(request.json)
+    if request.method=="POST":
+        clf = joblib.load("boston_housing_prediction.joblib")
+        inference_payload = pd.DataFrame(request.json)
+        
+    
+    if request.method=="GET":
+        args = request.args
+        CHAS = args.get("CHAS", default=0, type=int)
+        RM = args.get("RM", default=0, type=float)
+        TAX = args.get("TAX", default=0, type=float)
+        PTRATIO = args.get("PTRATIO", default=0, type=float)
+        B = args.get("B", default=0, type=float)
+        LSTAT = args.get("LSTAT", default=0, type=float)
+
+        input = ({
+        "CHAS": { "0": f"{CHAS}" },
+        "RM": { "0": f"{RM}" },
+        "TAX": { "0": f"{TAX}" },
+        "PTRATIO": { "0": f"{PTRATIO}" },
+        "B": { "0": f"{B}" },
+        "LSTAT": { "0": f"{LSTAT}" },
+        })
+
+        clf = joblib.load("boston_housing_prediction.joblib")
+        inference_payload = pd.DataFrame(input)
+    
     scaled_payload = scale(inference_payload)
     prediction = list(clf.predict(scaled_payload))
     return jsonify({'prediction': prediction})
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
