@@ -57,17 +57,17 @@ Using Python 3.7.
 
 ## Project organization 
 
-├── Makefile           <- Makefile with commands like `make install`
-├── requirements       
-├── README.md   
-├── Dockerfile             
-├── main.yaml          <- yaml file for AWS CodeBuild service test
-├── notebook           <- Folder for Jupyter notebook for ML service and model dump
-│   ├── boston_housing_pickle.ipynb         <- notebook for model train and dump
-│   ├── boston_housing_prediction.joblib    <- dumped model
-│   ├── housing.csv                         <- data source
-├── webapp             <- Folder for the API ML 
-│   ├── app.py                                     <- service in flask
-│   ├── boston_housing_prediction.joblib           <- dumped model
-│   ├── predict_get.py                             <- request using GET method for test
-│   ├── predict_post.py                            <- request using POST method for test
+    ├── Makefile           <- Makefile with commands like `make install`
+    ├── requirements       
+    ├── README.md   
+    ├── Dockerfile             
+    ├── main.yaml          <- yaml file for AWS CodeBuild service test
+    ├── notebook           <- Folder for Jupyter notebook for ML service and model dump
+    │   ├── boston_housing_pickle.ipynb         <- notebook for model train and dump
+    │   ├── boston_housing_prediction.joblib    <- dumped model
+    │   ├── housing.csv                         <- data source
+    ├── webapp             <- Folder for the API ML 
+    │   ├── app.py                                     <- service in flask
+    │   ├── boston_housing_prediction.joblib           <- dumped model
+    │   ├── predict_get.py                             <- request using GET method for test
+    │   ├── predict_post.py                            <- request using POST method for test
