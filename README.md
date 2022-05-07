@@ -3,17 +3,13 @@ chapter 3 of Practical MLOps: Operationalizing Machine Learning Models by Noah G
 ==============================
 
 Last training in dev enviroment:
-* Date: 04-17-2022
+* Date: 05-07-2022
 
 ----------------------
 
 ## Objetives
 
-This mini project aims to build a machine learning API using Flask. This project aims to consolidate my recently acquired knowledge on Flask, Docker and MLops practices such as Makefile usage.  
-
-This service returns a float number indicating the value of the house given certain features.
-
-API request could be either POST or GET methods. 
+This mini project aims to build a machine learning API using Flask.
 
 ## Initial setup or MakeFile
 
@@ -36,24 +32,8 @@ pip install -r requirements.txt
 
 `docker run -p 5000:5000 -d --name boston-flask-predict boston-flask-predict`
 
-* POST and GET method client request to the server
-
-`python predict_get.py`
-
-`python predict_post.py`
-
-it should return something like 
-
-{
-  "prediction": [
-    20.353731771344123
-  ]
-}
-
-and voilá! 
-
 ## Python
-Using Python 3.7.
+Using Python 3.8.1
 
 ## Project organization 
 
@@ -63,11 +43,13 @@ Using Python 3.7.
     ├── Dockerfile             
     ├── main.yaml          <- yaml file for AWS CodeBuild service test
     ├── notebook           <- Folder for Jupyter notebook for ML service and model dump
-    │   ├── boston_housing_pickle.ipynb         <- notebook for model train and dump
-    │   ├── boston_housing_prediction.joblib    <- dumped model
-    │   ├── housing.csv                         <- data source
+    │   ├── img_classification_pet.ipynb        <- notebook for model train and dump
+    │   ├── img_classification_potholes.ipynb   <- notebook for model train and dump
+    │   ├── model_pet.h5                        <- dumped model for pet (cat or dog classification)
+    │   ├── Petimages                           <- data source for pets
+    │   ├── Potholes                            <- data source for potholes
     ├── webapp             <- Folder for the API ML 
     │   ├── app.py                                     <- service in flask
-    │   ├── boston_housing_prediction.joblib           <- dumped model
-    │   ├── predict_get.py                             <- request using GET method for test
-    │   ├── predict_post.py                            <- request using POST method for test
+    │   ├── model_pet.h3                               <- dumped model for pets
+    │   ├── uploads                              <- folder responsible for receiving uploaded images from the template
+    │   ├── templates                            <- html home page
