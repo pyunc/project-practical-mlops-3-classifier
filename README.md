@@ -11,6 +11,12 @@ Last training in dev enviroment:
 
 This mini project aims to build a machine learning API using Flask.
 
+
+inspired by this amazing github:
+
+- https://github.com/mitkir/keras-flask-image-classifier
+- https://github.com/utk-ink/Defect-Detection-of-PCB
+
 ## Initial setup or MakeFile
 
 python -m venv .env
