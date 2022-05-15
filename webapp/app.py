@@ -82,7 +82,9 @@ def explanation(model, np_img_array, file_path):
 
     # upload new file to the uploads
 
-    filename_explained = 'object.jpg'
+    filename_explained = file_path.split('/')[-1]
+
+    filename_explained = f'explained_{filename_explained}'
 
     filename_explained_path = os.path.join(
         app.config['UPLOAD_FOLDER'],
@@ -142,4 +144,6 @@ def uploaded_file(filename):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, threaded=False)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, threaded=False, port=port, host='0.0.0.0')
+    # app.run(debug=True, threaded=False)
