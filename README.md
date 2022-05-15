@@ -16,10 +16,11 @@ Last training in dev enviroment:
 
 This mini classifier project aims to build a machine learning API using Flask and Docker. 
 
+![classification-examples-dog](https://github.com/pyunc/project-practical-mlops-3-classifier/blob/main/prediction_dogs.png)
 
+![classification-examples-pothole](https://github.com/pyunc/project-practical-mlops-3-classifier/blob/main/prediction_potholes.png)
 
-
-inspired by this amazing github:
+Project inspired by those nice github:
 
 - https://github.com/mitkir/keras-flask-image-classifier
 - https://github.com/utk-ink/Defect-Detection-of-PCB
