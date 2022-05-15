@@ -100,7 +100,7 @@ def predict(model, tf_img_array):
     predictions = model.predict(tf_img_array)
     score = [float(x) for x in predictions[0]]
 
-    return "This image is {:.0%} percent cats, {:.0%} percent dogs, {:.0%} percent no-potholes, {:.0%} percent potholes".format(score[0], score[1], score[2], score[3])
+    return "This image is {:.0%} cats, {:.0%} dogs and {:.0%} potholes".format(score[0], score[1], score[3])
 
 
 @app.route("/", methods=['POST', 'GET'])
