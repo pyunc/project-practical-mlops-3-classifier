@@ -11,7 +11,7 @@ import tensorflow as tf
 from flask import Flask, jsonify, render_template, request, send_from_directory
 from keras import layers, preprocessing
 from keras.models import load_model
-from keras.preprocessing.image import img_to_array, load_img
+from keras.utils.image_utils import img_to_array, load_img
 from lime import lime_image
 from numpy import arange
 from pandas import read_csv, set_option
