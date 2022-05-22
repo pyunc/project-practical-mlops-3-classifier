@@ -25,8 +25,9 @@ def home():
     return render_template('home.html', label='', imagesource='')
 
 
-def add(x):
+def add_example(x):
     return x+1
+
 
 def get_model(model: str):
     return load_model(model)
