@@ -98,7 +98,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.8.0
 pycparser==2.21
-pycurl
+# pycurl
 pyflakes==2.4.0
 Pygments==2.11.2
 pylint==2.6.2
