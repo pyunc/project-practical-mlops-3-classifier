@@ -5,4 +5,12 @@ install:
 	pip install -r requirements.txt
 	
 lint:
-	pylint --disable=R,C app.py
+	pylint --disable=R,C webapp/*.py
+
+test:
+	pytest
+
+prepare:
+	make install 
+	make test
+	make lint
