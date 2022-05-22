@@ -1,23 +1,14 @@
-import datetime
 import logging
 import os
-from concurrent.futures import thread
 
 import matplotlib.pyplot as plt
-import numpy
 import numpy as np
-import pandas as pd
 import tensorflow as tf
-from flask import Flask, jsonify, render_template, request, send_from_directory
-from keras import layers, preprocessing
+from flask import Flask, render_template, request, send_from_directory
 from keras.models import load_model
 from keras.utils.image_utils import img_to_array, load_img
 from lime import lime_image
-from numpy import arange
-from pandas import read_csv, set_option
-from skimage.segmentation import mark_boundaries
 from tensorflow import keras
-from tensorflow.python.client import device_lib
 from werkzeug.utils import secure_filename
 
 log = logging.getLogger(__name__)
@@ -51,7 +42,7 @@ def preprocess(file_path):
     return tf_img_array, np_img_array
 
 
-def explanation(model, np_img_array, file_path):
+def evaluate(model, np_img_array, file_path):
 
     explainer = lime_image.LimeImageExplainer()
 
@@ -63,7 +54,7 @@ def explanation(model, np_img_array, file_path):
         num_samples=500
     )
 
-    temp_1, mask_1 = explanation.get_image_and_mask(
+    _, mask_1 = explanation.get_image_and_mask(
         explanation.top_labels[1],
         positive_only=True,
         num_features=3,
@@ -73,7 +64,7 @@ def explanation(model, np_img_array, file_path):
     # get the file from the folder
     img = keras.preprocessing.image.load_img(file_path, target_size=IMAGE_SIZE)
 
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(100, 100))
+    _, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(100, 100))
 
     ax1.imshow(img, alpha=0.7)
     ax2.imshow(mask_1, alpha=0.7)
@@ -126,7 +117,7 @@ def upload_file():
             tf_img_array=tf_img_array
         )
 
-        output_explanation_path = explanation(
+        output_explanation_path = evaluate(
             model=loaded_model,
             np_img_array=np_img_array,
             file_path=file_path
