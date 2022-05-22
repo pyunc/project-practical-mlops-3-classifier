@@ -5,7 +5,7 @@ install:
 	pip install -r requirements.txt
 	
 lint:
-	pylint --disable=R,C */app.py
+	pylint --rcfile=.pylintrc --disable=R,C webapp/*.py
 
 test:
 	pytest
